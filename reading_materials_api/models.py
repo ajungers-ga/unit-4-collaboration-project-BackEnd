@@ -8,6 +8,8 @@ class ReadingMaterial(models.Model):
     title = models.CharField(max_length=255)  # Short text field (e.g., "Harry Potter")
     author = models.CharField(max_length=255)  # Short text field (e.g., "J.K. Rowling")
     description = models.TextField()  # Long text field (e.g., summary of the book)
+    type = models.CharField(max_length=100)  # New field: type of reading material (e.g., Book, Magazine, Manga)
+    score = models.IntegerField()  # New field: user score, expected 1-5
     created_at = models.DateTimeField(auto_now_add=True)  # Timestamp when created
     updated_at = models.DateTimeField(auto_now=True)  # Timestamp when updated
 
