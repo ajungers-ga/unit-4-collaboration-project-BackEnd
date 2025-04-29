@@ -31,9 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'reviews',
     'rest_framework',
     'corsheaders',
-    'reading_materials_api',
+    'reading_materials',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
