@@ -26,6 +26,18 @@ The frontend for this project is being developed separately and can be found at:
 
 ---
 
+## Full CRUD Functionality
+
+This API fully supports Create, Read, Update, and Delete (CRUD) operations for both ReadingMaterials and Reviews.  
+Users can:
+- Create new reading materials and reviews
+- Retrieve lists or specific entries
+- Update existing records
+- Delete records if needed
+
+All endpoints follow RESTful design principles for easy frontend integration.
+
+
 ## Technologies Used
 
 - Python
