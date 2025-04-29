@@ -46,6 +46,71 @@ All endpoints follow RESTful design principles for easy frontend integration.
 - PostgreSQL (for production database, SQLite used for development)
 - Git / GitHub for version control
 
+## Setting Up the Python Environment
+
+To ensure that everyone is working with the correct Python dependencies, we have included a Python virtual environment in this repository, named `python-env`. You can either activate the existing environment or create a new one based on the `requirements.txt`.
+
+### Option 1: Activating the Existing `python-env` Environment
+
+If you already have the `python-env` directory in the project, follow these steps to activate it:
+
+#### On macOS/Linux:
+1. Navigate to the project directory:
+    ```bash
+    cd path/to/your/project
+    ```
+2. Activate the environment:
+    ```bash
+    source python-env/bin/activate
+    ```
+
+#### On Windows:
+1. Navigate to the project directory:
+    ```bash
+    cd path\to\your\project
+    ```
+2. Activate the environment:
+    ```bash
+    .\python-env\Scripts\activate
+    ```
+
+Once the environment is activated, you can install the required dependencies (if not already installed) by running:
+```bash
+pip install -r requirements.txt
+```
+
+### Option 2: Creating a New Virtual Environment
+
+If you prefer to create a new virtual environment, follow these steps:
+
+#### 1. Create a New Virtual Environment:
+1. Navigate to the project directory:
+    ```bash
+    cd path/to/your/project
+    ```
+2. Create a virtual environment (you can name it something else if you prefer):
+    ```bash
+    python3 -m venv python-env
+    ```
+
+#### 2. Activate the Virtual Environment:
+
+##### On macOS/Linux:
+```bash
+source python-env/bin/activate
+```
+
+##### On Windows:
+```bash
+.\python-env\Scripts\activate
+```
+
+#### 3. Install Dependencies:
+After activating the environment, install the required packages:
+```bash
+pip install -r requirements.txt
+```
+
 ## API Endpoints Overview
 
 ### Reading Materials
