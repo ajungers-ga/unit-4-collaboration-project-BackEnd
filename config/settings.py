@@ -90,6 +90,7 @@ DATABASES = {
         'NAME': BASE_DIR / os.environ.get("DATABASE_NAME", "db.sqlite3"),                   # Try to get from .env or use default value of "db.sqlite3"
         'USER':            os.environ.get("DATABASE_USER", ""),                             # Try to get from .env or leave blank
         'PASSWORD':        os.environ.get("DATABASE_PASSWORD", ""),                         # Try to get from .env or leave blank
+        'PORT':            os.environ.get("DATABASE_PORT", ""),                             # Try to get from .env or leave blank
         'HOST':            os.environ.get("DATABASE_HOST", "localhost"),                    # Try to get from .env or leave as "localhost"
     }
 }
