@@ -46,70 +46,56 @@ All endpoints follow RESTful design principles for easy frontend integration.
 - PostgreSQL (for production database, SQLite used for development)
 - Git / GitHub for version control
 
+
 ## Setting Up the Python Environment
 
-To ensure that everyone is working with the correct Python dependencies, we have included a Python virtual environment in this repository, named `python-env`. You can either activate the existing environment or create a new one based on the `requirements.txt`.
+To set up your local environment, follow these steps:
 
-### Option 1: Activating the Existing `python-env` Environment
+1. **Create and Activate a Virtual Environment:**
 
-If you already have the `python-env` directory in the project, follow these steps to activate it:
+    - **On macOS/Linux:**
+      ```bash
+      python3 -m venv env
+      source env/bin/activate
+      ```
 
-#### On macOS/Linux:
-1. Navigate to the project directory:
-    ```bash
-    cd path/to/your/project
-    ```
-2. Activate the environment:
-    ```bash
-    source python-env/bin/activate
-    ```
+    - **On Windows:**
+      ```bash
+      python -m venv env
+      .\env\Scripts\activate
+      ```
 
-#### On Windows:
-1. Navigate to the project directory:
-    ```bash
-    cd path\to\your\project
-    ```
-2. Activate the environment:
-    ```bash
-    .\python-env\Scripts\activate
-    ```
+2. **Install Dependencies:**
+   Once the environment is activated, install the required packages:
+   ```bash
+   pip install -r requirements.txt
 
-Once the environment is activated, you can install the required dependencies (if not already installed) by running:
-```bash
-pip install -r requirements.txt
-```
+3. **Create and Configure `.env` File:**
 
-### Option 2: Creating a New Virtual Environment
+   Create a `.env` file in the root of your project to store your environment-specific settings.
 
-If you prefer to create a new virtual environment, follow these steps:
+   **Example `.env` file:**
+   ```
+   # Database configuration
+   DATABASE_ENGINE=django.db.backends.postgresql   # Only include this if you're using PostgreSQL. Omit this line for SQLite (SQLite is default).
+   DATABASE_NAME=your_db_name                      # Only include if using PostgreSQL
+   DATABASE_USER=your_db_user                      # Only include if using PostgreSQL
+   DATABASE_PASSWORD=your_db_password              # Only include if using PostgreSQL
+   DATABASE_HOST=localhost                         # Only include if using PostgreSQL
+   DATABASE_PORT=5432                              # Only include if using PostgreSQL
 
-#### 1. Create a New Virtual Environment:
-1. Navigate to the project directory:
-    ```bash
-    cd path/to/your/project
-    ```
-2. Create a virtual environment (you can name it something else if you prefer):
-    ```bash
-    python3 -m venv python-env
-    ```
+   # Allowed Origins for CORS
+   ALLOWED_ORIGINS=localhost, 54.173.248.136      # Only include if needed
+   ```
 
-#### 2. Activate the Virtual Environment:
+### **IMPORTANT:**
 
-##### On macOS/Linux:
-```bash
-source python-env/bin/activate
-```
+- **If you’re using SQLite**, **do not include the `DATABASE_ENGINE` line** in the `.env` file. SQLite is the default.
+  
+- **If you’re using PostgreSQL (or another DB engine)**, **include the `DATABASE_ENGINE` line** and set it to `django.db.backends.postgresql` or another engine.
+  
+- **Only include database settings** (`DATABASE_NAME`, `DATABASE_USER`, etc.) if you're using PostgreSQL. For SQLite, you don’t need any database settings in the `.env` file.
 
-##### On Windows:
-```bash
-.\python-env\Scripts\activate
-```
-
-#### 3. Install Dependencies:
-After activating the environment, install the required packages:
-```bash
-pip install -r requirements.txt
-```
 
 ## API Endpoints Overview
 
