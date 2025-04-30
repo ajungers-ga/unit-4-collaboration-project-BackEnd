@@ -1,5 +1,7 @@
-# Remove / Don't include python-env folder
+# Remove / Don't include python-env or any python related env folder
 python-env/
+env/
+venv/
 
 # Ignore env variable
 .env

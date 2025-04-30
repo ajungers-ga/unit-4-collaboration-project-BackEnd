@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE':          os.environ.get("DATABASE_ENGINE", "django.db.backends.sqlite3"), # Try to get from .env or use default value of "django.db.backends.sqlite3"
-        'NAME': BASE_DIR / os.environ.get("DATABASE_NAME", "db.sqlite3"),                   # Try to get from .env or use default value of "db.sqlite3"
+        'NAME':            os.environ.get("DATABASE_NAME", BASE_DIR / "db.sqlite3"),        # Try to get from .env or use default value of "db.sqlite3"
         'USER':            os.environ.get("DATABASE_USER", ""),                             # Try to get from .env or leave blank
         'PASSWORD':        os.environ.get("DATABASE_PASSWORD", ""),                         # Try to get from .env or leave blank
         'PORT':            os.environ.get("DATABASE_PORT", ""),                             # Try to get from .env or leave blank
