@@ -10,6 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
+
+# Load environment variables from a .env file
+from dotenv import load_dotenv; load_dotenv()
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,16 +30,16 @@ SECRET_KEY = 'django-insecure-%d8n4v5$+6)s_fxv^oo5j$owjpseidpwa(z!(-x#bsntkbgo^6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv('ALLOWED_ORIGINS', 'localhost').split(',') # Fetch ALLOWED_ORIGINS from the environment variable or use 'localhost' as the default
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'reviews',
-    'rest_framework',
-    'corsheaders',
-    'reading_materials',
+    'rest_framework',    # This tells django to use djangorestframework
+    'reading_materials', # This tells django to use the reading_materials API
+    'reviews',           # This tells django to use the reviews API
+    'corsheaders',       # This tells django to use the cors settings (security)
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,7 +49,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware', # this makes the cors package run for all requests.  A bit like app.use() in express
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -53,6 +58,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'config.urls'
 
@@ -79,8 +86,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE':          os.environ.get("DATABASE_ENGINE", "django.db.backends.sqlite3"), # Try to get from .env or use default value of "django.db.backends.sqlite3"
+        'NAME':            os.environ.get("DATABASE_NAME", BASE_DIR / "db.sqlite3"),        # Try to get from .env or use default value of "db.sqlite3"
+        'USER':            os.environ.get("DATABASE_USER", ""),                             # Try to get from .env or leave blank
+        'PASSWORD':        os.environ.get("DATABASE_PASSWORD", ""),                         # Try to get from .env or leave blank
+        'PORT':            os.environ.get("DATABASE_PORT", ""),                             # Try to get from .env or leave blank
+        'HOST':            os.environ.get("DATABASE_HOST", "localhost"),                    # Try to get from .env or leave as "localhost"
     }
 }
 
@@ -125,5 +136,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-CORS_ALLOW_ALL_ORIGINS = True
