@@ -13,6 +13,9 @@ class ReadingMaterial(models.Model):
     description = models.TextField()  # Long text field (e.g., summary of the book)
     type = models.CharField(max_length=100)  # Type of reading material (e.g., Book, Magazine, Manga)
     rating = models.FloatField(default=0.0)  # Optional: backend can update this later based on review ratings
+    isFeatured = models.BooleanField(default=False)
+    isFavorite = models.BooleanField(default=False)
+    readingStatus = models.CharField(max_length=50, default='unread')  # or whatever default fits
     created_at = models.DateTimeField(auto_now_add=True)  # Timestamp when created
     updated_at = models.DateTimeField(auto_now=True)  # Timestamp when updated
 
