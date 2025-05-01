@@ -43,9 +43,13 @@ class ReviewSerializer(serializers.ModelSerializer):
 # 3. Define ReadingMaterialSerializer
 class ReadingMaterialSerializer(serializers.ModelSerializer):
     # Map snake_case model fields to camelCase keys for the frontend
-    authorName = serializers.CharField(source='author_name')
-    coverImage = serializers.URLField(source='cover_image')
-    publicationDate = serializers.DateField(source='publication_date')
+    # authorName = serializers.CharField(source='authorName')
+    # coverImage = serializers.URLField(source='coverImage')
+    # publicationDate = serializers.DateField(source='publicationDate')
+    
+    authorName = serializers.CharField()
+    coverImage = serializers.URLField()
+    publicationDate = serializers.DateField()
     isFeatured = serializers.BooleanField(default=False)
     isFavorite = serializers.BooleanField(default=False)
     readingStatus = serializers.CharField(default=None, allow_null=True)
@@ -64,7 +68,7 @@ class ReadingMaterialSerializer(serializers.ModelSerializer):
             'categories',
             'description',
             'type',
-            'average_score',
+            'rating',
             'isFeatured',
             'isFavorite',
             'readingStatus',
