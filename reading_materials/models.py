@@ -6,9 +6,9 @@ from django.db import models
 # 2. Define the model (ReadingMaterial)
 class ReadingMaterial(models.Model):
     title = models.CharField(max_length=255)  # Short text field (e.g., "Harry Potter")
-    author_name = models.CharField(max_length=255)  # Short text field (e.g., "J.K. Rowling")
-    cover_image = models.URLField(blank=True) # IMG URL placeholder
-    publication_date = models.DateField(null=True, blank=True)
+    authorName = models.CharField(max_length=255)  # Short text field (e.g., "J.K. Rowling")
+    coverImage = models.URLField(blank=True) # IMG URL placeholder
+    publicationDate = models.DateField(null=True, blank=True)
     categories = models.JSONField(default=list)
     description = models.TextField()  # Long text field (e.g., summary of the book)
     type = models.CharField(max_length=100)  # Type of reading material (e.g., Book, Magazine, Manga)
