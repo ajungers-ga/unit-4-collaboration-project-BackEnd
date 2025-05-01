@@ -6,10 +6,13 @@ from django.db import models
 # 2. Define the model (ReadingMaterial)
 class ReadingMaterial(models.Model):
     title = models.CharField(max_length=255)  # Short text field (e.g., "Harry Potter")
-    author = models.CharField(max_length=255)  # Short text field (e.g., "J.K. Rowling")
+    author_name = models.CharField(max_length=255)  # Short text field (e.g., "J.K. Rowling")
+    cover_image = models.URLField(blank=True) # IMG URL placeholder
+    publication_date = models.DateField(null=True, blank=True)
+    categories = models.JSONField(default=list)
     description = models.TextField()  # Long text field (e.g., summary of the book)
     type = models.CharField(max_length=100)  # Type of reading material (e.g., Book, Magazine, Manga)
-    average_score = models.FloatField(default=0.0)  # Optional: backend can update this later based on review ratings
+    rating = models.FloatField(default=0.0)  # Optional: backend can update this later based on review ratings
     created_at = models.DateTimeField(auto_now_add=True)  # Timestamp when created
     updated_at = models.DateTimeField(auto_now=True)  # Timestamp when updated
 
