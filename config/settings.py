@@ -30,8 +30,9 @@ SECRET_KEY = 'django-insecure-%d8n4v5$+6)s_fxv^oo5j$owjpseidpwa(z!(-x#bsntkbgo^6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_ORIGINS', 'localhost').split(',') # Fetch ALLOWED_ORIGINS from the environment variable or use 'localhost' as the default
-
+ALLOWED_HOSTS = os.getenv('ALLOWED_ORIGINS', 'localhost').split(',')
+ALLOWED_HOSTS += ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = list(set(ALLOWED_HOSTS))  # Ensure no duplicates if 'localhost' is in ALLOWED_ORIGINS
 
 # Application definition
 
