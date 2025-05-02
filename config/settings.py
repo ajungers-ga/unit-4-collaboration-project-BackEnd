@@ -37,6 +37,7 @@ ALLOWED_HOSTS = list(set(ALLOWED_HOSTS))  # Ensure no duplicates if 'localhost' 
 # Application definition
 
 INSTALLED_APPS = [
+    'authors',           
     'rest_framework',    # This tells django to use djangorestframework
     'reading_materials', # This tells django to use the reading_materials API
     'reviews',           # This tells django to use the reviews API
