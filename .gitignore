@@ -5,3 +5,7 @@ venv/
 
 # Ignore env variable
 .env
+
+# Ignore the databse file
+*.sqlite3
+db.sqlite3

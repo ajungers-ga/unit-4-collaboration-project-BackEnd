@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-%d8n4v5$+6)s_fxv^oo5j$owjpseidpwa(z!(-x#bsntkbgo^6
 DEBUG = True
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_ORIGINS', 'localhost').split(',')
-ALLOWED_HOSTS += ['localhost', '127.0.0.1']
+ALLOWED_HOSTS += ['localhost', '127.0.0.1', '0.0.0.0']
 ALLOWED_HOSTS = list(set(ALLOWED_HOSTS))  # Ensure no duplicates if 'localhost' is in ALLOWED_ORIGINS
 
 # Application definition
