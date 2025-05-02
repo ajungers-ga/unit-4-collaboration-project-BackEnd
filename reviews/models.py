@@ -17,12 +17,3 @@ class Review(models.Model):
     def __str__(self):
         return f"Review by {self.reviewer_name} on {self.reading_material.title}"
 
-# 2. Define the Author model
-class Author(models.Model):
-    name = models.CharField(max_length=255)
-    photo = models.URLField()  # Image URL
-    biography = models.TextField()
-    popular_books = models.JSONField(default=list)  # List of book IDs
-
-    def __str__(self):
-        return self.name
