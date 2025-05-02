@@ -29,7 +29,7 @@
 
 # 1. Import serializers and models
 from rest_framework import serializers
-from .models import ReadingMaterial
+from .models import ReadingMaterial, Author
 from reviews.models import Review  # Import Review model
 
 
@@ -76,3 +76,8 @@ class ReadingMaterialSerializer(serializers.ModelSerializer):
             'updated_at',
             'reviews'
         ]
+
+class AuthorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Author
+        fields = ['id', 'name', 'photo', 'biography', 'popular_books']
