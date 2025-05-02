@@ -26,6 +26,7 @@ class ReadingMaterial(models.Model):
     def __str__(self):
         return self.title
     
+    
     # 2. Define the Author model
 class Author(models.Model):
     name = models.CharField(max_length=255)
