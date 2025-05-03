@@ -18,20 +18,9 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+
     path('admin/', admin.site.urls),
     path('api/reading-materials/', include('reading_materials.urls')), 
     path('api/reviews/', include('reviews.urls')),
-=======
->>>>>>> c20ac65
-    path('api/reading-materials/', include('reading_materials.urls')),
     path('api/authors/', include('authors.urls')),
-    path('api/reviews/', include('reviews.urls')),
-    path('admin/', admin.site.urls),
-<<<<<<< HEAD
-=======
->>>>>>> 693b3a1 (patches to authors)
->>>>>>> c20ac65
 ]

@@ -1,9 +1,8 @@
 from django.db import models
 
-# Create your models here.
 class Author(models.Model):
     name = models.CharField(max_length=255)
-    photo = models.URLField()  # Image URL
+    photo = models.URLField()  # URL to the author's photo
     biography = models.TextField()
     popular_books = models.JSONField(default=list)  # List of book IDs
 

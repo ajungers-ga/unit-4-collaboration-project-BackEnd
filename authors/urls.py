@@ -1,8 +1,7 @@
-# authors/urls.py
 from django.urls import path
-from .views import AuthorListCreate, AuthorDetail
+from . import views
 
 urlpatterns = [
-    path('', AuthorListCreate.as_view(), name='author-list'),
-    path('<int:pk>/', AuthorDetail.as_view(), name='author-detail'),
+    path('', views.AuthorListCreateView.as_view(), name='author_list'),
+    path('<int:pk>/', views.AuthorRetrieveUpdateDestroyView.as_view(), name='author_detail'),
 ]
