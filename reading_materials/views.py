@@ -1,8 +1,8 @@
 # reading_materials/views.py
 
 from rest_framework import generics
-from .models import ReadingMaterial, Author
-from .serializers import ReadingMaterialSerializer, AuthorSerializer
+from .models import ReadingMaterial
+from .serializers import ReadingMaterialSerializer
 
 # Reading Material Views
 class ReadingMaterialListCreateView(generics.ListCreateAPIView):
@@ -13,7 +13,3 @@ class ReadingMaterialRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPI
     queryset = ReadingMaterial.objects.all()
     serializer_class = ReadingMaterialSerializer
 
-# Author Views
-class AuthorListCreateView(generics.ListCreateAPIView):
-    queryset = Author.objects.all()
-    serializer_class = AuthorSerializer
