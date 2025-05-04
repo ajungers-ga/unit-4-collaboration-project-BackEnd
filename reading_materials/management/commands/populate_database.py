@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand
 from django.utils.dateparse import parse_date
 from reading_materials.models import ReadingMaterial
 from reviews.models import Review
+from news.models import News
 
 class Command(BaseCommand):
     help = 'Populates the database with initial reading material and review data'
@@ -239,5 +240,67 @@ class Command(BaseCommand):
             
             review.save()
             self.stdout.write(f"Created review by {review.reviewer_name} for {book.title}")
+        
+        # Create news
+        self.stdout.write('Clearing existing news items...')
+        News.objects.all().delete()
+        # News data
+        self.stdout.write('Creating news items...')
+        news_data = [
+            {
+                "title": "\"The Night Wanderer,\" the popular mystery novel, has been renewed for a sequel, much to the delight of its dedicated fanbase.",
+                "content": "Publisher HarperCollins has announced that Alex Michaelides will be writing a sequel to his popular mystery novel \"The Night Wanderer\". The announcement comes after the book spent 15 weeks on the New York Times bestseller list. The sequel, tentatively titled \"The Dawn Seeker\", is expected to be released in late 2026.",
+                "date": "2025-04-28",
+                "image": "/images/newscard2.png",
+                "author": "Literary Times"
+            },
+            {
+                "title": "The highly anticipated fourth book in the \"Chronicles of the Forgotten\" series is set to premiere on September 4, 2025, promising more thrilling storylines and complex characters that readers have come to love.",
+                "content": "Fans of Delia Owens' epic fantasy series have been eagerly awaiting the fourth installment, which was delayed by six months due to the author's extensive research trips. The publisher has revealed that this will be the longest book in the series yet, clocking in at over 400 pages. Early reviews from critics who received advance copies have been overwhelmingly positive.",
+                "date": "2025-04-25",
+                "image": "/images/newscard.png",
+                "author": "Fantasy Book Review"
+            },
+            {
+                "title": "Notable authors, including the acclaimed Gary Oldman and Cillian Murphy, will continue to bring depth and intrigue to the literary world with their upcoming releases.",
+                "content": "In a surprising career pivot, award-winning actors Gary Oldman and Cillian Murphy have both announced debut novels to be published next year. Oldman's historical fiction \"The Unseen Hand\" and Murphy's psychological thriller \"Quiet Minds\" have already generated significant buzz in publishing circles, with film rights being discussed before the books have even hit shelves.",
+                "date": "2025-04-20",
+                "image": "/images/newscard1.png",
+                "author": "Entertainment Weekly"
+            },
+            {
+                "title": "Annual Book Festival to feature virtual reality reading rooms for the first time",
+                "content": "This year's International Book Festival will introduce cutting-edge virtual reality reading rooms, allowing attendees to immerse themselves in settings from popular books. Visitors can experience everything from the Hogwarts Great Hall to the dystopian landscape of The Hunger Games, bringing literature to life in unprecedented ways.",
+                "date": "2025-04-15",
+                "image": "/images/newscard2.png",
+                "author": "Tech & Literature"
+            },
+            {
+                "title": "Study shows dramatic increase in audiobook consumption among young adults",
+                "content": "A recent study by the National Reading Foundation has found that audiobook consumption among 18-25 year olds has increased by 45% over the past two years. This shift is attributed to the rise of multitasking culture and improvements in audiobook production quality, with full cast recordings and ambient sound effects becoming increasingly common.",
+                "date": "2025-04-10",
+                "image": "/images/newscard4.png",
+                "author": "Publishing Insights"
+            },
+            {
+                "title": "Local libraries embracing AI book recommendation systems",
+                "content": "Public libraries across the country are adopting AI-powered recommendation systems to help readers discover new books. These systems analyze reading history and preferences to suggest titles readers might enjoy, with early data showing a 30% increase in circulation for libraries that have implemented the technology.",
+                "date": "2025-04-05",
+                "image": "/images/newscard5.png",
+                "author": "Library Journal"
+            }
+        ]
+
+        # Create news items
+        for news_item in news_data:
+            # Parse the date string to a Python date object
+            if 'date' in news_item and news_item['date']:
+                news_item['date'] = parse_date(news_item['date'])
+            
+            # Create the news item
+            news = News.objects.create(**news_item)
+            self.stdout.write(f"Created news item: {news.title[:50]}...")
+
+        self.stdout.write(self.style.SUCCESS('News items created successfully!'))
 
         self.stdout.write(self.style.SUCCESS('Database population completed successfully!'))

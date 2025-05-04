@@ -23,4 +23,5 @@ urlpatterns = [
     path('api/reading-materials/', include('reading_materials.urls')), 
     path('api/reviews/', include('reviews.urls')),
     path('api/authors/', include('authors.urls')),
+    path('api/news/', include('news.urls')),
 ]
