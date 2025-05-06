@@ -8,7 +8,7 @@ class ReadingMaterial(models.Model):
     title = models.CharField(max_length=255)  # Short text field (e.g., "Harry Potter")
     authorName = models.CharField(max_length=255)  # Short text field (e.g., "J.K. Rowling")
     coverImage = models.URLField(blank=True) # IMG URL placeholder
-    publicationDate = models.DateField(null=True, blank=True)
+    publicationDate = models.DateField(null=True, blank=True) # Some flexibility to make this field OPTIONAL with NULL
     categories = models.JSONField(default=list)
     description = models.TextField()  # Long text field (e.g., summary of the book)
     type = models.CharField(max_length=100)  # Type of reading material (e.g., Book, Magazine, Manga)
@@ -25,14 +25,24 @@ class ReadingMaterial(models.Model):
 # This improves the Admin view — instead of showing 'Company object (1)', it shows a readable name like 'Apple' or 'Google'.
     def __str__(self):
         return self.title
+# self refers to the CURRENT INSTANCE, in this case it refers to the TITLE field of the ReadingMaterial obj   
     
     
-    # 2. Define the Author model
-class Author(models.Model):
-    name = models.CharField(max_length=255)
-    photo = models.URLField()  # Image URL
-    biography = models.TextField()
-    popular_books = models.JSONField(default=list)  # List of book IDs
+    
+    
+    
+    
+    
+    
+    
+    
+    
+#     # 2. Define the Author model
+# class Author(models.Model):
+#     name = models.CharField(max_length=255)
+#     photo = models.URLField()  # Image URL
+#     biography = models.TextField()
+#     popular_books = models.JSONField(default=list)  # List of book IDs
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name

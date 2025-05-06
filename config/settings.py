@@ -37,7 +37,7 @@ ALLOWED_HOSTS = list(set(ALLOWED_HOSTS))  # Ensure no duplicates if 'localhost' 
 # Application definition
 
 INSTALLED_APPS = [
-    'news',               # This tells django to use the news API
+    'news',              # This tells django to use the news API
     'authors',           # This tells django to use authors API
     'rest_framework',    # This tells django to use djangorestframework
     'reading_materials', # This tells django to use the reading_materials API
