@@ -69,13 +69,14 @@ To set up your local environment, follow these steps:
    Once the environment is activated, install the required packages:
    ```bash
    pip install -r requirements.txt
+   ```
 
 3. **Create and Configure `.env` File:**
 
    Create a `.env` file in the root of your project to store your environment-specific settings.
 
    **Example `.env` file:**
-   ```
+   ```bash
    # Database configuration
    DATABASE_ENGINE=django.db.backends.postgresql   # Only include this if you're using PostgreSQL. Omit this line for SQLite (SQLite is default).
    DATABASE_NAME=your_db_name                      # Only include if using PostgreSQL
@@ -88,13 +89,20 @@ To set up your local environment, follow these steps:
    ALLOWED_ORIGINS=localhost, 54.173.248.136      # Only include if needed
    ```
 
+4. **Run the Server:**
+   ```bash
+   python manage.py runserver
+   # OR to run on a specific host and port:
+   python manage.py runserver 0.0.0.0:3002
+   ```
+
 ### **IMPORTANT:**
 
-- **If you’re using SQLite**, **do not include the `DATABASE_ENGINE` line** in the `.env` file. SQLite is the default.
+- **If you're using SQLite**, **do not include the `DATABASE_ENGINE` line** in the `.env` file. SQLite is the default.
   
-- **If you’re using PostgreSQL (or another DB engine)**, **include the `DATABASE_ENGINE` line** and set it to `django.db.backends.postgresql` or another engine.
+- **If you're using PostgreSQL (or another DB engine)**, **include the `DATABASE_ENGINE` line** and set it to `django.db.backends.postgresql` or another engine.
   
-- **Only include database settings** (`DATABASE_NAME`, `DATABASE_USER`, etc.) if you're using PostgreSQL. For SQLite, you don’t need any database settings in the `.env` file.
+- **Only include database settings** (`DATABASE_NAME`, `DATABASE_USER`, etc.) if you're using PostgreSQL. For SQLite, you don't need any database settings in the `.env` file.
 
 
 ## API Endpoints Overview
@@ -122,4 +130,3 @@ Nested Reviews: When fetching a Reading Material by ID, all related Reviews are 
 Clean project structure following Django REST API best practices.
 
 Separation of concerns: Reading Materials and Reviews are handled by two separate Django apps.
-
